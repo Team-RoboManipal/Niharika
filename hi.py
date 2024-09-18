@@ -1,4 +1,3 @@
-'''
 #1
 n=int(input("Enter the number:"))
 if(n%2==0):
@@ -55,7 +54,18 @@ if p==0:
 else:
     print("Not Prime")
 
-
+#6
+nlst=eval(input("Enter the list:"))
+def flatten(nlst):
+    fl = []  
+    for i in nlst: 
+        if isinstance(i, list):  
+            fl += flatten(i)  
+        else:
+            fl.append(i)  
+    return fl
+res = flatten(nlst)
+print(res)
 
 
 #7
@@ -132,30 +142,24 @@ print(lst3)
 
 
 #10
-dict={}
 lst1=[]
 lst2=[]
 lst=[]
 n1=int(input("Enter the number of dictionaries:"))
 n2=int(input("Enter the number of elements for dictionary:"))
 for i in range(n1):
+    dict = {}
     for j in range(n2):
-        e1=input("Enter the element for key:")
-        lst1.append(e1)
-        e2=input("Enter the element for value:")
-        lst2.append(e2)
-    print("\n")
+        key = input("Enter the element for key: ")
+        value = input("Enter the element for value: ")
+        dict[key] = value  
 
-    for l in lst1:
-        for m in lst2:
-            dict[l]=m
-            
-    lst.append(dict)
-
+    lst.append(dict) 
 print(lst)
 
 k=input("Key:")
-
+sorted_data = sorted(lst, key=lambda x: x[k])
+print(sorted_data)
 
 
 
@@ -190,10 +194,90 @@ for i in lst1:
     lst.append(x)
         
 print(lst)
-'''
+
+#13
+def longest_increasing_subsequence(lst):
+
+    n = len(lst)
+    lis = [1] * n  
+    
+    for i in range(1, n):
+        for j in range(i):
+            if lst[i] > lst[j]:
+                lis[i] = max(lis[i], lis[j] + 1)
+    
+    return max(lis)
+
+
+lst = eval(input("Enter the list:"))
+result = longest_increasing_subsequence(lst)
+print("Length of the longest increasing subsequence:", result)
+
+
+#14
+def create_node(data):
+    return {'data': data, 'next': None}
+
+def insert(node, data):
+    new_node = create_node(data)
+    new_node['next'] = node
+    return new_node
+
+def delete(node, value):
+    if node is None:
+        return None
+    if node['data'] == value:
+        return node['next']
+    node['next'] = delete(node['next'], value)
+    return node
+
+def traverse(node):
+    current = node
+    while current:
+        print(current['data'], end=' -> ')
+        current = current['next']
+    print("None")
+
+
+head = None
+head = insert(head, 30)
+head = insert(head, 20)
+head = insert(head, 10)
+
+print("Linked List:")
+traverse(head)
+
+
+head = delete(head, 20)
+
+print("\nAfter deleting 20:")
+traverse(head)
+
 
 #15
-stk=[]
-top = len(stk)-1
-def push():
+def create_stack():
+    return []
+
+def push(stack, item):
+    stack.append(item)
+    return stack
+
+def pop(stack):
+    if len(stack) < 1:
+        return None
+    return stack.pop()
+
+def is_empty(stack):
+    return len(stack) == 0
+
+my_stack = create_stack()
+
+my_stack = push(my_stack, 5)
+my_stack = push(my_stack, 10)
+
+popped_item = pop(my_stack)
+print("Stack after operations:", my_stack)
+
+print("Is stack empty?", is_empty(my_stack))
+
 
