@@ -21,7 +21,7 @@ int main(){
     return 0;
 }
 
-//2
+//6
 #include <iostream>
 
 int main() {
@@ -66,3 +66,59 @@ int main() {
 
 
 //3
+#include <iostream>
+
+int main() {
+    int i,j,n,temp, pos, small;
+    char x;
+    int a[10];
+    std::cout<<"enter dimension for a \n";
+    std::cin>>n;
+    
+ 
+    std::cout<<"enter elements for a \n";
+    for(i=0;i<n;i++)
+        std::cin>>a[i]; 
+        
+    std::cout<<"enter 's' or 'b' \n";
+    std::cin>>x;    
+    
+    switch(x){
+        case 'b':
+            for(i=0;i<n-1;i++) { 
+                for(j=0;j<n-i-1;j++) {
+                    if(a[j]>a[j+1]){ 
+                        temp=a[j];
+                        a[j]=a[j+1];
+                        a[j+1]=temp;
+                    }
+                }
+            }
+            for(i=0;i<n;i++)
+                std::cout<<a[i]<<"\t"; 
+        
+        
+        case 's':
+            for(i = 0; i < n-1; i++) { 
+                pos = i; 
+                small = a[i];
+                for(j=i+1; j<n; j++) { 
+                    if(small > a[j]) { 
+                        pos = j; 
+                        small = a[j]; 
+                    }
+                }
+            a[pos] = a[i]; 
+            a[i] = small;
+            }
+        for(i=0;i<n;i++)
+            std::cout<<a[i]<<"\t"; 
+
+    }
+    
+        
+
+    return 0;
+}
+
+//8
