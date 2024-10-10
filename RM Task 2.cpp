@@ -21,7 +21,8 @@ int main(){
     return 0;
 }
 
-//6
+
+//2
 #include <iostream>
 
 int main() {
@@ -64,8 +65,36 @@ int main() {
     return 0;
 }
 
+//
+#include <iostream>
 
-//3
+int main() {
+    int n1, n2, sum1=0, sum2=0;
+    std::cout<<"Enter the first number:";
+    std::cin>>n1;
+    std::cout<<"Enter the second number:";
+    std::cin>>n2;
+    
+    
+    for(int i=1; i<n1; i++){
+        if(n1%i==0)
+            sum1=sum1+i;
+    }
+    for(int i=1; i<n2; i++){
+        if(n2%i==0)
+            sum2=sum2+i;
+    }
+    
+    if(sum1==n2 & sum2==n1)
+        std::cout<<"They are amicable numbers";
+    else
+        std::cout<<"They are not amicable numbers";
+        
+    return 0;
+}
+
+
+//6
 #include <iostream>
 
 int main() {
@@ -122,3 +151,159 @@ int main() {
 }
 
 //8
+#include <iostream>
+
+int main() {
+    int i, j, m, n, p, q, k;
+    int A[10][10], B[10][10],C[10][10],D[10][10]={0};
+    std::cout<<"enter dimension for a \n";
+    std::cin>>m>>n;
+    std::cout<<"\n enter dimension for b\n";
+    std::cin>>p>>q;
+    
+    if(n!=p){
+        std::cout<<"Enter sq matrix \n";
+        exit(0); }
+    std::cout<<"enter elements for a \n";
+    for (i=0;i<m;i++){
+        for(j=0;j<n;j++)
+            std::cin>>A[i][j];
+    }
+    
+    std::cout<<"\n Matrix A:\n";
+    for (i=0;i<m;i++){
+        for(j=0;j<n;j++)
+            std::cout<<A[i][j]<<"\t";
+        std::cout<<"\n";
+    }
+    
+
+    std::cout<<"\n enter elements for b\n";
+    for(i=0;i<p;i++){ 
+        for(j=0;j<q;j++)
+            std::cin>>B[i][j];
+    }
+    
+    std::cout<<"\n Matrix B:\n";
+    for (i=0;i<p;i++){
+        for(j=0;j<q;j++)
+            std::cout<<B[i][j]<<"\t";
+        std::cout<<"\n";
+    }
+    
+
+    for(i=0;i<m;i++) {
+        for(j=0;j<q;j++) {
+            C[i][j]=0;
+            for(k=0;k<n;k++)
+                C[i][j]=C[i][j]+A[i][k]*B[k][j];
+        }
+    }
+    std::cout<<"\n The product matrix is \n";
+    for(i=0;i<m;i++){
+        for(j=0;j<q;j++)
+            std::cout<<C[i][j]<<"\t";
+        std::cout<<"\n";
+    }
+    
+    for(i=0;i<m;i++){
+        for(j=0;j<n;j++){
+            D[i][j]=A[j][i];
+            
+        }
+    }      
+    std::cout<<"\n The transpose matrix is \n";
+    for(i=0;i<m;i++){
+        for(j=0;j<n;j++)
+            std::cout<<D[i][j]<<"\t";
+        std::cout<<"\n";
+    }
+    
+
+    return 0;
+}
+
+/*
+#include <iostream>
+
+int main() {
+    int i, j, m, n, p, q, k;
+    int a,b,c,d;
+    int A[10][10], B[10][10],C[10][10],D[10][10]={0};
+    std::cout<<"enter dimension for a \n";
+    std::cin>>m>>n;
+    std::cout<<"\n enter dimension for b\n";
+    std::cin>>p>>q;
+    
+    if(n!=p){
+        std::cout<<"Enter sq matrix \n";
+        exit(0); }
+    std::cout<<"enter elements for a \n";
+    for (i=0;i<m;i++){
+        for(j=0;j<n;j++)
+            std::cin>>A[i][j];
+    }
+    
+    std::cout<<"\n Matrix A:\n";
+    for (i=0;i<m;i++){
+        for(j=0;j<n;j++)
+            std::cout<<A[i][j]<<"\t";
+        std::cout<<"\n";
+    }
+    
+
+    std::cout<<"\n enter elements for b\n";
+    for(i=0;i<p;i++){ 
+        for(j=0;j<q;j++)
+            std::cin>>B[i][j];
+    }
+    
+    std::cout<<"\n Matrix B:\n";
+    for(i=0;i<p;i++){
+        for(j=0;j<q;j++)
+            std::cout<<B[i][j]<<"\t";
+        std::cout<<"\n";
+    }
+    
+    void prod(int x,int y){
+        void prod(int,int);
+        for(int i=0;i<m;i++) {
+            for(int j=0;j<q;j++) {
+                C[i][j]=0;
+                for(k=0;k<n;k++)
+                    C[i][j]=C[i][j]+A[i][k]*B[k][j];
+            }
+        }
+        std::cout<<"\n The product matrix is \n";
+        for(int i=0;i<m;i++){
+            for(int j=0;j<q;j++)
+                std::cout<<C[i][j]<<"\t";
+            std::cout<<"\n";
+        }
+    
+    }
+    
+    void transpose(int x, int y){
+        void transpose(int, int);
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                D[i][j]=A[j][i];
+            }
+        }     
+        
+        std::cout<<"\n The transpose matrix is \n";
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++)
+                std::cout<<D[i][j]<<"\t";
+            std::cout<<"\n";
+        }
+    }
+    
+    std::cout<<"To prove the idenetity (A.B)' = B'.A':";
+    a=transpose(prod(A[10][10],B[10][10]));
+    std::cout<<a;
+
+    return 0;
+}
+*/
+
