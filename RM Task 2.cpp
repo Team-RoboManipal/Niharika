@@ -65,6 +65,44 @@ int main() {
     return 0;
 }
 
+//4
+#include <iostream>
+
+int main() {
+    int n;
+    
+    std::cout << "Enter the number: ";
+    std::cin >> n;
+    
+    std::string s = std::to_string(n);
+    int l = s.length();
+    bool hn = true; 
+    int peak = 0;
+
+   
+    while (peak < l - 1 && s[peak] < s[peak + 1]) {
+        peak++;
+    }
+
+    if (peak == 0 || peak == l - 1) {
+        hn = false;
+    } else {
+        for (int i = peak + 1; i < l; i++) {
+            if (s[i] >= s[i - 1]) {
+                hn = false;
+                break;
+            }
+        }
+    }
+
+    if (hn)
+        std::cout << "The number is a hill number." ;
+    else
+        std::cout << "The number is not a hill number.";
+
+    return 0;
+}
+
 //
 #include <iostream>
 
@@ -307,3 +345,68 @@ int main() {
 }
 */
 
+//12
+#include <iostream>
+
+int fact(int n){
+    
+    if(n==0){
+        return 1;
+    }
+    int prevFact = fact(n-1);
+    return n*prevFact;
+}
+
+int main() {
+    
+    int n;
+    std::cout << "Enter the number:";
+    std::cin >> n;
+    std::cout << fact(n);
+    return 0;
+}
+
+
+//13
+//without recursion
+#include <iostream>
+
+int main() {
+    
+    int n, a, x, rd, sum=0;
+    std::cout << "Enter the number:";
+    std::cin >> n;
+    
+    x=n;
+    
+    while(x!=0){
+        rd=x%10;
+        x=x/10;
+        sum=sum+rd;
+    }
+    std::cout << sum;
+
+    return 0;
+}
+
+
+//with recursion
+#include <iostream>
+
+int sum(int n){
+    
+    if(n==0){
+        return 0;
+    }
+    int prevSum = sum(n/10);
+    return (n%10) + prevSum;
+}
+
+int main() {
+    
+    int n;
+    std::cout << "Enter the number:";
+    std::cin >> n;
+    std::cout << sum(n);
+    return 0;
+}
