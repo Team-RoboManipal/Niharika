@@ -344,7 +344,49 @@ int main() {
     return 0;
 }
 */
+//11
+#include <stdio.h>
 
+int binarySearch(int array[], int low, int high, int key) {
+    if (low > high) {
+        return -1; // Base case: element not found
+    }
+
+    int mid = (low + high) / 2;
+
+    if (array[mid] == key) {
+        return mid; // Key found
+    } else if (key < array[mid]) {
+        return binarySearch(array, low, mid - 1, key); // Search in the left half
+    } else {
+        return binarySearch(array, mid + 1, high, key); // Search in the right half
+    }
+}
+
+int main() {
+    int N, key;
+    printf("Enter the number of elements: ");
+    scanf("%d", &N);
+
+    int array[N];
+    printf("Enter the elements in sorted order:\n");
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &array[i]);
+    }
+
+    printf("Enter the element to search for: ");
+    scanf("%d", &key);
+
+    int result = binarySearch(array, 0, N - 1, key);
+    
+    if (result != -1) {
+        printf("SUCCESSFUL SEARCH.\nElement found at position %d\n", result + 1);
+    } else {
+        printf("Search element NOT Found\n");
+    }
+
+    return 0;
+}
 //12
 #include <iostream>
 
@@ -408,5 +450,30 @@ int main() {
     std::cout << "Enter the number:";
     std::cin >> n;
     std::cout << sum(n);
+    return 0;
+}
+
+//14
+#include <iostream>
+
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b; 
+        a = temp;
+    }
+    return a; 
+}
+
+int main() {
+    int num1, num2;
+
+    std::cout << "Enter two numbers: ";
+    std::cin >> num1 >> num2;
+
+    int result = gcd(num1, num2); 
+
+    std::cout << "The greatest common divisor of " << num1 << " and " << num2 << " is: " << result ;
+
     return 0;
 }
