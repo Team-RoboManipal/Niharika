@@ -65,6 +65,114 @@ int main() {
     return 0;
 }
 
+//3
+#include <iostream>
+int main(){
+    int i, j, m, n, p, q, k;
+    int A[10][10], B[10][10];
+    std::cout<<"enter dimension for a \n";
+    std::cin>>m>>n;
+    
+ 
+    std::cout<<"enter elements for a \n";
+    for (i=0;i<m;i++){
+        for(j=0;j<n;j++)
+            std::cin>>A[i][j];
+    }
+    
+    std::cout<<"\n Matrix A:\n";
+    for (i=0;i<m;i++){
+        for(j=0;j<n;j++)
+            std::cout<<A[i][j]<<"\t";
+        std::cout<<"\n";
+    }
+    
+    
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < n; j++) {
+            B[i][j] = A[i][j];
+        }
+    }
+    
+    for (i=0;i<m;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            if(B[i][j]==0)
+            {
+                for (int k = 0; k < n; k++) 
+                {
+                    B[i][k] = 0;
+                }
+                for (int p = 0; p < m; p++) 
+                {
+                    B[p][j] = 0;
+                }
+            }
+        }
+    }
+    
+    std::cout<<"\n New Matrix A:\n";
+    for (i=0;i<m;i++){
+        for(j=0;j<n;j++)
+            std::cout<<B[i][j]<<"\t";
+        std::cout<<"\n";
+    }
+    
+    return 0;
+}
+
+// and.....
+#include <iostream>
+
+int main() {
+    int m, n;
+    int A[10][10], B[10][10];
+    bool zeroRows[10] = {0}, zeroCols[10] = {0};
+
+    std::cout << "Enter dimensions for a: ";
+    std::cin >> m >> n;
+
+    std::cout << "Enter elements for a: ";
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            std::cin >> A[i][j];
+            B[i][j] = A[i][j];
+            if (A[i][j] == 0) {
+                zeroRows[i] = true;
+                zeroCols[j] = true;
+            }
+        }
+    }
+
+    for (int i = 0; i < m; i++) {
+        if (zeroRows[i]) {
+            for (int j = 0; j < n; j++) {
+                B[i][j] = 0;
+            }
+        }
+    }
+
+    for (int j = 0; j < n; j++) {
+        if (zeroCols[j]) {
+            for (int i = 0; i < m; i++) {
+                B[i][j] = 0;
+            }
+        }
+    }
+
+    std::cout << "\nNew Matrix A:\n";
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            std::cout << B[i][j] << "\t";
+        }
+        std::cout << "\n";
+    }
+
+    return 0;
+}
+
+
 //4
 #include <iostream>
 
@@ -103,7 +211,7 @@ int main() {
     return 0;
 }
 
-//
+//5
 #include <iostream>
 
 int main() {
@@ -264,9 +372,48 @@ int main() {
 /*
 #include <iostream>
 
-int main() {
+int prod(int x[],int y[]){
     int i, j, m, n, p, q, k;
     int a,b,c,d;
+    int A[10][10], B[10][10],C[10][10],D[10][10]={0};
+    for(int i=0;i<m;i++) {
+        for(int j=0;j<q;j++) {
+            C[i][j]=0;
+            for(k=0;k<n;k++)
+                C[i][j]=C[i][j]+A[i][k]*B[k][j];
+        }
+    }
+    std::cout<<"\n The product matrix is \n";
+    for(int i=0;i<m;i++){
+        for(int j=0;j<q;j++)
+            std::cout<<C[i][j]<<"\t";
+        std::cout<<"\n";
+    }
+    return 0;
+}
+    
+int transpose(int x[]){
+    int i, j, m, n, p, q, k;
+    int a,b,c,d;
+    int A[10][10], B[10][10],C[10][10],D[10][10]={0};
+    for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++){
+            D[i][j]=A[j][i];
+        }
+    }     
+        
+    std::cout<<"\n The transpose matrix is \n";
+    for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++)
+            std::cout<<D[i][j]<<"\t";
+        std::cout<<"\n";
+    }
+    return 0;
+}
+    
+int main() {
+    int i, j, m, n, p, q, k;
+    int a[10][10],b[10][10],c[10][10],d[10][10],e[10][10];
     int A[10][10], B[10][10],C[10][10],D[10][10]={0};
     std::cout<<"enter dimension for a \n";
     std::cin>>m>>n;
@@ -303,47 +450,53 @@ int main() {
         std::cout<<"\n";
     }
     
-    void prod(int x,int y){
-        void prod(int,int);
-        for(int i=0;i<m;i++) {
-            for(int j=0;j<q;j++) {
-                C[i][j]=0;
-                for(k=0;k<n;k++)
-                    C[i][j]=C[i][j]+A[i][k]*B[k][j];
-            }
-        }
-        std::cout<<"\n The product matrix is \n";
-        for(int i=0;i<m;i++){
-            for(int j=0;j<q;j++)
-                std::cout<<C[i][j]<<"\t";
-            std::cout<<"\n";
-        }
-    
-    }
-    
-    void transpose(int x, int y){
-        void transpose(int, int);
-        for(int i=0;i<m;i++){
-            for(int j=0;j<n;j++){
-                D[i][j]=A[j][i];
-            }
-        }     
-        
-        std::cout<<"\n The transpose matrix is \n";
-        for(int i=0;i<m;i++){
-            for(int j=0;j<n;j++)
-                std::cout<<D[i][j]<<"\t";
-            std::cout<<"\n";
-        }
-    }
-    
     std::cout<<"To prove the idenetity (A.B)' = B'.A':";
-    a=transpose(prod(A[10][10],B[10][10]));
-    std::cout<<a;
+    a=transpose(A);
+    b=transpose(B);
+    e=prod(a,b);
+    c=prod(A,B);
+    d=transpose(a);
+    if(d==e)
+        std::cout<<"True";
 
     return 0;
 }
+
 */
+*/
+
+
+//10
+#include <iostream>
+
+int fib(int n){
+    
+    if(n==1)
+        return 0;
+    else if(n==2)
+        return 1;
+    
+    int prevFib = fib(n-1) + fib(n-2);
+    return prevFib;
+}
+
+int main() {
+    
+    int n;
+    std::cout << "Enter the number of terms:";
+    std::cin >> n;
+    
+    
+    for (int i = 1; i <= n; ++i) {
+            std::cout << fib(i);
+            if (i < n) {
+                std::cout << ", ";
+            }
+    }
+    return 0;
+}
+
+
 //11
 #include <stdio.h>
 
@@ -357,9 +510,9 @@ int binarySearch(int array[], int low, int high, int key) {
     if (array[mid] == key) {
         return mid; // Key found
     } else if (key < array[mid]) {
-        return binarySearch(array, low, mid - 1, key); // Search in the left half
+        return binarySearch(array, low, mid - 1, key); 
     } else {
-        return binarySearch(array, mid + 1, high, key); // Search in the right half
+        return binarySearch(array, mid + 1, high, key); 
     }
 }
 
@@ -477,3 +630,5 @@ int main() {
 
     return 0;
 }
+
+
