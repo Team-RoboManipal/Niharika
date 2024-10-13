@@ -70,4 +70,6 @@ git cherry-pick <Commit1> <Commit2> <...>
 
 
 
+
+
 'HEAD' is the symbolic name for the currently checked out commit
