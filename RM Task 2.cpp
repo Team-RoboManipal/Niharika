@@ -465,6 +465,70 @@ int main() {
 */
 */
 
+    #include <iostream>
+#include <cstring> 
+#include <algorithm> 
+using namespace std;
+
+void sortL(char arr[][100], int n) {
+   
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (strlen(arr[j]) > strlen(arr[j + 1])) {
+                
+                char temp[100];
+                strcpy(temp, arr[j]);
+                strcpy(arr[j], arr[j + 1]);
+                strcpy(arr[j + 1], temp);
+            }
+        }
+    }
+}
+
+
+void sortI(char arr[][100], int n) {
+    for (int i = 0; i < n; i++) {
+        int len = strlen(arr[i]);
+        sort(arr[i]); 
+    }
+}
+
+
+int main() {
+    int n;
+
+   
+    cout << "Enter the number of strings: ";
+    cin >> n;
+    cin.ignore(); 
+
+    char arr[100][100]; 
+    
+    cout << "Enter the strings:" << endl;
+    for (int i = 0; i < n; i++) {
+        cin.getline(arr[i], 100);
+    }
+
+    
+    sortL(arr, n);
+
+    
+    cout << "\nStrings sorted by length:" << endl;
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << endl;
+    }
+
+    
+    sortI(arr, n);
+
+    
+    cout << "\nStrings with individual characters sorted:" << endl;
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << endl;
+    }
+
+    return 0;
+}
 
 //10
 #include <iostream>
