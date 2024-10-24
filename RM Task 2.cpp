@@ -210,8 +210,66 @@ int main() {
 
     return 0;
 }
-
 //5
+#include<iostream>
+int main(){
+    int n, i,octalNum[100],binaryNum[100],x; 
+    std::cout<<"enter n: ";
+    std::cin>>n;
+    x=n;
+    i = 0; 
+    while (n != 0) { 
+        octalNum[i] = n % 8; 
+        n = n / 8; 
+        i++; 
+    } 
+    for (int j = i - 1; j >= 0; j--) 
+        std::cout << octalNum[j];
+    std::cout<<"\n";
+    
+    n=x;    
+    i = 0; 
+    while (n > 0) {
+    
+        binaryNum[i] = n % 2;
+        n = n / 2;
+        i++;
+    }
+
+    for (int j = i - 1; j >= 0; j--)
+        std::cout << binaryNum[j];
+    std::cout<<"\n";
+
+	char hexaDeciNum[100]; 
+
+    n=x;   	
+    i = 0; 
+	while (n != 0) { 
+		int temp = 0; 
+		temp = n % 16; 
+
+		if (temp < 10) { 
+			hexaDeciNum[i] = temp + 48; 
+			i++; 
+		} 
+		else { 
+			hexaDeciNum[i] = temp + 55; 
+			i++; 
+		} 
+
+		n = n / 16; 
+	} 
+
+
+	for (int j = i - 1; j >= 0; j--) 
+		std::cout << hexaDeciNum[j]; 
+
+
+
+} 
+
+
+//6
 #include <iostream>
 
 int main() {
