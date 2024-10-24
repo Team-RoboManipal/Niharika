@@ -631,4 +631,39 @@ int main() {
     return 0;
 }
 
+//15
+#include <iostream>
+int sortR(int list[], int ln){
+    int i, tmp, min;
+    if (ln <= 1)
+        return 0;
+
+    min = 0;
+    for(i = 1; i < ln; i++)
+    if (list[i] < list[min])
+        min = i;
+
+    tmp = list[0];
+    list[0] = list[min];
+    list[min] = tmp;
+
+    return sortR(&list[1], ln-1);
+}
+
+int main(){
+    int n, list[20],x;
+    std::cout << "Enter number of elements: ";
+    std::cin >>n;
+    std::cout << "Enter elements: ";
+    for(int i=0;i<n;i++)
+        std::cin>>list[i];
+    
+    sortR(list, n);
+    std::cout << "Sorted: ";
+    for (int i = 0; i < n; i++) {
+        std::cout << list[i] << " ";
+    }
+    
+}
+
 
